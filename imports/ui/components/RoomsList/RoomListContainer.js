@@ -18,6 +18,7 @@ class RoomListContainer extends Component {
                     rooms={this.props.rooms}
                     loading={this.props.loading}
                     navCallback={this._navigationCallback.bind(this)}
+                    authenticated={true}
                 />
             </div>
         );
