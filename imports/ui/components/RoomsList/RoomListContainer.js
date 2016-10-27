@@ -11,8 +11,6 @@ class RoomListContainer extends Component {
     _navigationCallback(roomId) {
         console.log(`navigate to route: /rooms/${roomId}`);
         browserHistory.push(`/rooms/${roomId}`);
-        //browserHistory.push('')
-        this.props.dispatch(usernameChanged('hello my friend'));
     }
 
     render() {
@@ -45,7 +43,7 @@ const  DataContainer = createContainer(() => {
 
 const mapStateToProps = (state) => {
     return {
-        isUserFilled: state.user.username != '',
+        isUserFilled: state.user.username !== '' && state.user.length !== 0,
     };
 };
 

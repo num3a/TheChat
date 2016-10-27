@@ -15,6 +15,7 @@ class UserNameContainer extends Component {
         return(
             <div>
                 <UserName
+                    value={this.props.username}
                     userChanged={this._usernameChanged.bind(this)}
                 />
             </div>

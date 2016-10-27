@@ -1,7 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-class RoomsCollection extends Mongo.Collection {
+class MessagesCollection extends Mongo.Collection {
     insert(list, callback) {
         return super.insert(list, callback);
     }
@@ -10,22 +10,27 @@ class RoomsCollection extends Mongo.Collection {
     }
 }
 
-export const Rooms = new RoomsCollection('Rooms');
+export const Messages = new MessagesCollection('Messages');
 
 // Deny all client-side updates since we will be using methods to manage this collection
-Rooms.deny({
+Messages.deny({
     insert() { return true; },
     update() { return true; },
     remove() { return true; },
 });
 
-Rooms.schema = new SimpleSchema({
+Messages.schema = new SimpleSchema({
     _id: { type: String, regEx: SimpleSchema.RegEx.Id, optional: false },
-    name: { type: String, optional: false },
-    description: { type: String, optional: true },
+    text: { type: String, optional: false },
+    roomId: { type: String, regEx: SimpleSchema.RegEx.Id, optional: false },
+    user: { type: String, optional: false},
+    date: { type: Date, optional: false, defaultValue: new Date()}
 });
 
-Rooms.attachSchema(Rooms.schema);
+Messages.attachSchema(Messages.schema);
 
-Rooms.helpers({
+
+
+Messages.helpers({
+
 });

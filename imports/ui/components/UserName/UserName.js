@@ -3,12 +3,13 @@ import { Textfield } from 'react-mdl';
 
 class UserName extends Component {
     render(){
-        const { userChanged } = this.props;
+        const { userChanged,value } = this.props;
 
         return(
             <div>
                 <Textfield
-                    label="username"
+                    value={value}
+                    label="Enter a username..."
                     onChange={(event) => {
                         userChanged(event.target.value);
                     }}

@@ -10,14 +10,16 @@ const RoomsList = (props) => {
         );
     }
     return(
-        <List style={{width: 300, marginLeft: 300}}>
+        <List style={{width: 300}}>
             {
                 rooms.map((room) => {
                     let roomId = room._id;
                     return (
                         <ListItem key={room._id}>
                             {room.name}
-                            <Button disabled={!isUserFilled} raised colored onClick={navCallback.bind(null,room._id)}>
+                            <Button disabled={!isUserFilled} raised colored onClick={() => {
+                                navCallback(room._id);
+                            }}>
                                 Enter
                             </Button>
                         </ListItem>

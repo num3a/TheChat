@@ -5,13 +5,17 @@ import { Layout, Header, Content, Footer, FooterSection, FooterLinkList } from '
 import { getColorClass, getTextColorClass} from '../utils/palette';
 
 //Redux
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import TheChatReducers from '../reducers';
 import { Provider } from 'react-redux';
 import createLogger from 'redux-logger';
+import {persistStore, autoRehydrate} from 'redux-persist'
+
 const logger = createLogger();
-const createStoreWithMiddleware = applyMiddleware(logger)(createStore);
-const store = createStoreWithMiddleware(TheChatReducers);
+const middleWare = [logger];
+let store = compose(applyMiddleware(...middleWare), autoRehydrate())(createStore)(TheChatReducers);
+
+persistStore(store);
 
 
 class App extends Component {

@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Rooms } from '../../api/rooms/rooms';
+import { Messages } from '../../api/messages/messages';
 
 Meteor.startup(() =>{
     //Initialize rooms
@@ -31,4 +32,7 @@ Meteor.startup(() =>{
             description: 'Pour réagir face à la restriction contextuelle, je recommande de prendre en compte l\'ensemble des décisions optimales, depuis longtemps.'
         });
     }
+
+    //let messagesCount = Rooms.fin
+
 });
