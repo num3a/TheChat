@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Room from './Room';
 import { Messages } from '../../../api/messages/messages';
+import moment from 'moment';
 
 import { connect } from 'react-redux';
 import { createContainer } from 'meteor/react-meteor-data';
@@ -18,6 +19,7 @@ class RoomContainer extends Component {
             text: message,
             user: user,
             roomId: roomId,
+            date: new Date(),
         });
         this.props.dispatch(messageChanged(''));
 

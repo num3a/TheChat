@@ -3,6 +3,15 @@ import { Grid, Cell, Card, CardTitle, CardText, Textfield, Button} from 'react-m
 import moment from 'moment';
 
 class Room extends Component {
+   /* shouldComponentUpdate(nextProps, nextState){
+        console.log('nextProps',nextProps);
+        console.log('nextState',nextState);
+        if(nextProps.messageValue !== ""){
+            return true;
+        }
+        return false;
+    }
+*/
     render() {
         const  { messages, onSubmitForm, onMessageChange, messageValue } = this.props;
         return(

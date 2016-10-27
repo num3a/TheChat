@@ -24,7 +24,7 @@ Messages.schema = new SimpleSchema({
     text: { type: String, optional: false },
     roomId: { type: String, regEx: SimpleSchema.RegEx.Id, optional: false },
     user: { type: String, optional: false},
-    date: { type: Date, optional: false, defaultValue: new Date()}
+    date: { type: Date, optional: false}
 });
 
 Messages.attachSchema(Messages.schema);
