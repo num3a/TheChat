@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import usernameReducer from './username';
+import user from './user';
 
 
 const TheChatReducers = combineReducers({
-    usernameReducer,
+    user: user,
 });
 
 export default TheChatReducers;

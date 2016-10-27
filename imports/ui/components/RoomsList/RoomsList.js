@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { List, ListItem, Spinner, Button } from 'react-mdl';
 
 const RoomsList = (props) => {
-    const { navCallback, rooms, loading, authenticated } = props;
+    const { navCallback, rooms, loading, isUserFilled } = props;
 
     if(loading){
         return (
@@ -17,7 +17,7 @@ const RoomsList = (props) => {
                     return (
                         <ListItem key={room._id}>
                             {room.name}
-                            <Button disabled={!authenticated} raised colored onClick={navCallback.bind(null,room._id)}>
+                            <Button disabled={!isUserFilled} raised colored onClick={navCallback.bind(null,room._id)}>
                                 Enter
                             </Button>
                         </ListItem>

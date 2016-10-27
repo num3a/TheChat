@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import { Textfield } from 'react-mdl';
 
 class UserName extends Component {
-    render() {
+    render(){
+        const { userChanged } = this.props;
+
         return(
             <div>
-                <h1>UserName</h1>
+                <Textfield
+                    label="username"
+                    onChange={(event) => {
+                        userChanged(event.target.value);
+                    }}
+                />
             </div>
         );
     }

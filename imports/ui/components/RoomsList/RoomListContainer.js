@@ -22,7 +22,7 @@ class RoomListContainer extends Component {
                     rooms={this.props.rooms}
                     loading={this.props.loading}
                     navCallback={this._navigationCallback.bind(this)}
-                    authenticated={true}
+                    isUserFilled={this.props.isUserFilled}
                 />
             </div>
         );
@@ -45,7 +45,7 @@ const  DataContainer = createContainer(() => {
 
 const mapStateToProps = (state) => {
     return {
-
+        isUserFilled: state.user.username != '',
     };
 };
 
