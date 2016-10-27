@@ -17,7 +17,7 @@ const RoomsList = (props) => {
                     return (
                         <ListItem key={room._id}>
                             {room.name}
-                            <Button disabled={authenticated} raised colored onClick={navCallback.bind(null,room._id)}>
+                            <Button disabled={!authenticated} raised colored onClick={navCallback.bind(null,room._id)}>
                                 Enter
                             </Button>
                         </ListItem>
