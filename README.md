@@ -26,3 +26,4 @@ Run it:
 meteor
 ```
 
+Go to http://localhost:3000/ 
