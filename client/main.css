@@ -1,0 +1,8 @@
+body {
+    min-height: 100%
+}
+#app {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
