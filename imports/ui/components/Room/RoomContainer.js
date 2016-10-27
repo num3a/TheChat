@@ -4,13 +4,33 @@ import { Messages } from '../../../api/messages/messages';
 
 import { connect } from 'react-redux';
 import { createContainer } from 'meteor/react-meteor-data';
+import { messageChanged } from '../../actions/messaging';
 
 class RoomContainer extends Component {
+    _onMessageChange(message){
+        let { dispatch } = this.props;
+        dispatch(messageChanged(message));
+    }
+    _onSubmit(event){
+        event.preventDefault();
+        const { message, user, roomId } = this.props;
+        Messages.insert({
+            text: message,
+            user: user,
+            roomId: roomId,
+        });
+        this.props.dispatch(messageChanged(''));
+
+    }
     render() {
+        const { messages } = this.props;
         return(
             <div>
                 <Room
-                    messages={{}}
+                    messageValue={this.props.message}
+                    onMessageChange={this._onMessageChange.bind(this)}
+                    onSubmitForm={this._onSubmit.bind(this)}
+                    messages={messages}
                 />
             </div>
         );
@@ -22,7 +42,12 @@ const DataContainer = createContainer(({ params }) => {
 
     const messageHandle = Meteor.subscribe('messages.byRoom', params.roomId);
 
-    let messages = Messages.find({ roomId : params.roomId }).fetch();
+    let messages = Messages.find(
+        { roomId : params.roomId },
+        {
+            sort: {date: -1 }
+        }
+    ).fetch();
 
     const loading = !messageHandle.ready();
 
@@ -34,6 +59,9 @@ const DataContainer = createContainer(({ params }) => {
 
 const mapStateToProps = (state) => {
     return {
+        message: state.messaging.message,
+        user: state.user.username,
+        roomId: state.room.roomId,
     };
 };
 

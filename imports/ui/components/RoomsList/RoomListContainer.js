@@ -3,7 +3,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Rooms } from '../../../api/rooms/rooms';
 import RoomsList from './RoomsList';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
-import { usernameChanged } from '../../actions/username';
+import { selectedRoomChanged } from '../../actions/room';
 import { connect } from 'react-redux';
 
 
@@ -11,6 +11,7 @@ class RoomListContainer extends Component {
     _navigationCallback(roomId) {
         console.log(`navigate to route: /rooms/${roomId}`);
         browserHistory.push(`/rooms/${roomId}`);
+        this.props.dispatch(selectedRoomChanged(roomId));
     }
 
     render() {

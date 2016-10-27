@@ -6,6 +6,7 @@ Meteor.publish('messages.byRoom', (roomId) => {
         roomId: roomId.toString()
     }, {
         limit: 10,
+        sort: {date: -1 }
     });
 
     /*return Messages.find({ roomId: roomId},{

@@ -14,9 +14,9 @@ export const Messages = new MessagesCollection('Messages');
 
 // Deny all client-side updates since we will be using methods to manage this collection
 Messages.deny({
-    insert() { return true; },
-    update() { return true; },
-    remove() { return true; },
+    insert() { return false; },
+    update() { return false; },
+    remove() { return false; },
 });
 
 Messages.schema = new SimpleSchema({

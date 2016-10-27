@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import UserName from './UserName';
-import { usernameChanged } from '../../actions/username';
+import { usernameChanged } from '../../actions/user';
 import { createContainer } from 'meteor/react-meteor-data';
 
 import { connect } from 'react-redux';
