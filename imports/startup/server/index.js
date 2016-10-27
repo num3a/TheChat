@@ -8,6 +8,4 @@ import './security.js';
 // as an API to the client.
 import './register-api.js';
 
-import './oauth.js';
-
 import './seeds.js';

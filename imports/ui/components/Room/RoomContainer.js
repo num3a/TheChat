@@ -39,7 +39,7 @@ class RoomContainer extends Component {
 
 const DataContainer = createContainer(({ params }) => {
     console.log('roomId:', params);
-
+    //TODO: fix order after update
     const messageHandle = Meteor.subscribe('messages.byRoom', params.roomId);
 
     let messages = Messages.find(
